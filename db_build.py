@@ -23,11 +23,12 @@ CREATE_PODCAST_TABLE = """
 CREATE_SEGMENT_TABLE = """
     CREATE TABLE IF NOT EXISTS segment(
         id VARCHAR(255) PRIMARY KEY,
+        podcast_id VARCHAR(255) NOT NULL,
+        content TEXT,
         start_time FLOAT NOT NULL,
         stop_time FLOAT NOT NULL,
-        content TEXT,
         embedding VECTOR(128),
-        FOREIGN KEY(id) REFERENCES podcast(id) 
+        FOREIGN KEY(podcast_id) REFERENCES podcast(id) 
             ON DELETE CASCADE
     )
 """
